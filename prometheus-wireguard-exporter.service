@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus WireGuard Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/bin/prometheus_wireguard_exporter -n /etc/wireguard/wg0.conf
+
+[Install]
+WantedBy=multi-user.target
