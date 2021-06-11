@@ -1,4 +1,4 @@
-# WireGuard Tunnel Connectivity Alerts
+# WireGuard Connectivity Monitoring & Alerting
 
 ## Use-case
 Suppose, you have multi-datacenter WireGuard setup, where you want to be alerted if WireGuard tunnel connectivity between them is lost or lagging. So, the problem is how can we be alerted in that case. 
