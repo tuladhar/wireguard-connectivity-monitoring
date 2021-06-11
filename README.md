@@ -59,4 +59,8 @@ time() - wireguard_latest_handshake_seconds{instance="my-wireguard-tunnel"}
 
 **You're all set.**
 
-**Finally, create the alert and 180s of threshold. Normally wireguard sends health check every 2 minutes, so it's safe to keep 3 minutes, i.e, 180 seconds.**
+## Step 4. Create the alert
+1. Click on Create Alert.
+2. Set the condition as `WHEN avg() OF query(A, 1m, now) IS ABOVE 180`
+
+Normally wireguard sends health check every 2 minutes, so it's safe to keep 3 minutes, i.e, 180 seconds as alerting threshold.
