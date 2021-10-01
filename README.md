@@ -1,6 +1,6 @@
 # WireGuard Connectivity Monitoring & Alerting
 
-## Use-case
+# Use-case
 Suppose, you have multi-datacenter WireGuard setup, where you want to be alerted if WireGuard tunnel connectivity between them is lost or lagging. So, the problem is how can we be alerted in that case. 
 
 In this guide, I'll be showing you how to setup the alert using:
@@ -13,24 +13,24 @@ In this guide, I'll be showing you how to setup the alert using:
 ### Step 1.1. Install wireguard prometheus exporter
 NOTE: `yum` is used, you can use any package manager.
 ```
-yum install cargo
-cargo install prometheus_wireguard_exporter
-install -m755 /root/.cargo/bin/prometheus_wireguard_exporter /usr/local/bin/
-yum remove cargo
+$ yum install cargo
+$ cargo install prometheus_wireguard_exporter
+$ install -m755 /root/.cargo/bin/prometheus_wireguard_exporter /usr/local/bin/
+$ yum remove cargo
 ```
 
 ### Step 1.2. Install systemd service for the exporter
 ```
-curl https://raw.githubusercontent.com/tuladhar/wireguard-alerts/main/prometheus-wireguard-exporter.service > /etc/systemd/system/prometheus-wireguard-exporter.service
+$ curl https://raw.githubusercontent.com/tuladhar/wireguard-alerts/main/prometheus-wireguard-exporter.service > /etc/systemd/system/prometheus-wireguard-exporter.service
 ```
 And enable the exporter service.
 ```
-systemctl enable --now prometheus-wireguard-exporter.service
+$ systemctl enable --now prometheus-wireguard-exporter.service
 ```
 
 ### Step 1.3. Verify exporter works
 ```
-curl localhost:9586/metrics
+$ curl localhost:9586/metrics
 ```
 
 ## Step 2. Configure Prometheus to scrape the exporter metrics
